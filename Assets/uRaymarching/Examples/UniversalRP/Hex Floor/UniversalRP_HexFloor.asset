@@ -1,0 +1,76 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3acd6fe57257048db802c1c4c2b75248, type: 3}
+  m_Name: UniversalRP_HexFloor
+  m_EditorClassIdentifier: 
+  shaderName: UniversalRP_HexFloor
+  shaderReference: {fileID: 4800000, guid: 41d9747774fbb4899a6a51bdb11ce746, type: 3}
+  shaderTemplate: uRaymarching/UniversalRP/Lit
+  variables:
+  - key: Name
+    value: UniversalRP_HexFloor
+  - key: ObjectShape
+    value: CUBE
+  - key: RaymarchingShaderDirectory
+    value: Assets/uRaymarching/Runtime/Shaders/Include/UniversalRP
+  - key: RenderType
+    value: Opaque
+  - key: RenderQueue
+    value: Geometry
+  - key: LOD
+    value: 300
+  conditions:
+  - key: ShadowCaster
+    value: 1
+  - key: FullScreen
+    value: 0
+  - key: WorldSpace
+    value: 0
+  - key: FollowObjectScale
+    value: 0
+  - key: CameraInsideObject
+    value: 0
+  - key: UseRaymarchingDepth
+    value: 1
+  - key: FallbackToDiffuse
+    value: 1
+  - key: ObjectScale
+    value: 0
+  - key: CheckIfInsideObject
+    value: 0
+  - key: RayStopsAtDepthTexture
+    value: 0
+  - key: RayStartsFromDepthTexture
+    value: 0
+  - key: CheckDepthPrepass
+    value: 0
+  blocks:
+  - key: Properties
+    value: "[Header(Additional Properties)]\r\n_TopColor(\"TopColor\", Color) = (1,
+      1, 1, 0)\r"
+    folded: 1
+  - key: DistanceFunction
+    value: "inline float DistanceFunction(float3 pos) {\r\n    float d = mb(pos,8);\r\n   
+      return d;\r\n}\r"
+    folded: 1
+  - key: PostEffect
+    value: "float4 _TopColor;\r\n\r\ninline void PostEffect(RaymarchInfo ray, inout
+      PostEffectOutput o)\r\n{\r\n    float3 localPos = ToLocal(ray.endPos);\r\n   
+      o.emission += smoothstep(0.48, 0.50, localPos.y) * _TopColor;\r\n    o.occlusion
+      *= 1.0 - .5 * ray.loop / ray.maxLoop;\r\n    o.albedo *= o.occlusion;\r\n}\r"
+    folded: 1
+  constants: {fileID: 11400000, guid: 9c8b2f5a7a56c4e21bee7ca4ccfc6640, type: 2}
+  basicFolded: 1
+  conditionsFolded: 1
+  variablesFolded: 1
+  materialsFolded: 1
+  constantsFolded: 1

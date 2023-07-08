@@ -70,3 +70,12 @@ crashlytics-build.properties
 # Temporary auto-generated Android Assets
 /[Aa]ssets/[Ss]treamingAssets/aa.meta
 /[Aa]ssets/[Ss]treamingAssets/aa/*
+
+# For This Project
+Assets/3rd\ Parties/
+Wiki
+shadertoolsconfig.json
+.vsconfig
+.vscode
+.DS_Store
+mono_crash*
