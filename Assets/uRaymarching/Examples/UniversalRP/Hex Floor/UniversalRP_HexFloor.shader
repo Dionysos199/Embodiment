@@ -215,7 +215,7 @@ inline float hexagone(float3 pos)
 
 // @block DistanceFunction
 inline float DistanceFunction(float3 pos) {
-    float d = mandlebulb(pos);
+    float d = mb(pos,8);
     return d;
 }
 // @endblock
