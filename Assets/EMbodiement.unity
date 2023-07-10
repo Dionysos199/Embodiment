@@ -1106,7 +1106,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &961739750
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2337,6 +2337,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1951119752}
+  - component: {fileID: 1951119754}
+  - component: {fileID: 1951119753}
   m_Layer: 0
   m_Name: Text2Img
   m_TagString: Untagged
@@ -2359,3 +2361,82 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1951119753
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1951119751}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 615c5ba30c0a67046815ee3688e8aa9f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _config: {fileID: 11400000, guid: 78ce1067b7109a349832ef64d712aafa, type: 2}
+  txt2imgInput:
+    prompt: dog
+    negative_prompt: 
+    samplerMethod: 0
+    sampler_name: Euler a
+    steps: 20
+    n_iter: 1
+    batch_size: 1
+    restore_faces: 0
+    tiling: 0
+    width: 512
+    height: 512
+    cfg_scale: 7
+    seed: -1
+    rotate180: 0
+    enable_hr: 0
+    hr_upscaler: Latent
+    upscalerModel: 1
+    hr_second_pass_steps: 0
+    denoising_strength: 0.7
+    hr_scale: 2
+    useExtra: 0
+    showSteps: 1
+    extraInput:
+      image: 
+      resize_mode: 1
+      upscaling_resize: 2
+      upscaler_1: None
+    saveImageToFile: 0
+  useRenderers: 1
+  targetRenderers:
+  - {fileID: 1264496251}
+  useEvents: 0
+  ResponseEvents:
+  - m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &1951119754
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1951119751}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6877106f3f5e23a41956495db0d6ddf5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnStart:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1951119753}
+        m_TargetAssemblyTypeName: StableDiffusion.Txt2Img, StableDiffusion
+        m_MethodName: GenerateImages
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnUpdate:
+    m_PersistentCalls:
+      m_Calls: []
