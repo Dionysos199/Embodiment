@@ -155,11 +155,11 @@ MonoBehaviour:
   m_Name: HTCViveTrackerProfile Standalone
   m_EditorClassIdentifier: 
   m_enabled: 0
-  nameUi: 
-  version: 
-  featureIdInternal: 
-  openxrExtensionStrings: 
-  company: 
+  nameUi: HTC Vive Tracker Profile
+  version: 0.0.1
+  featureIdInternal: com.massive.openxr.feature.input.htcvivetracker
+  openxrExtensionStrings: XR_HTCX_vive_tracker_interaction
+  company: MASSIVE
   priority: 0
   required: 0
 --- !u!114 &-1102252098865892010
@@ -428,6 +428,7 @@ MonoBehaviour:
   - {fileID: 3691024198990381950}
   - {fileID: -6986503749646063126}
   - {fileID: -5338382361880659145}
+  - {fileID: -2256080798755864202}
   - {fileID: -2543329954847509011}
   - {fileID: 393698245414500898}
   - {fileID: 263210944769939643}
