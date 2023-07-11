@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: UniversalRP_HexFloor
   m_EditorClassIdentifier: 
   shaderName: UniversalRP_HexFloor
-  shaderReference: {fileID: 4800000, guid: 41d9747774fbb4899a6a51bdb11ce746, type: 3}
+  shaderReference: {fileID: 4800000, guid: 8f846a681d55c2342acd0c73c068dca1, type: 3}
   shaderTemplate: uRaymarching/UniversalRP/Lit
   variables:
   - key: Name
@@ -59,7 +59,7 @@ MonoBehaviour:
       1, 1, 0)\r"
     folded: 1
   - key: DistanceFunction
-    value: "inline float DistanceFunction(float3 pos) {\r\n    float d = mb(pos,8);\r\n   
+    value: "inline float DistanceFunction(float3 pos) {\r\n    float d = stalagmite(pos);\r\n   
       return d;\r\n}\r"
     folded: 1
   - key: PostEffect
