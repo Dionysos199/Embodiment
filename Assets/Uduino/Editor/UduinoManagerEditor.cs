@@ -713,7 +713,7 @@ namespace Uduino
             }
 
             if (Manager.ExtensionIsPresentAndActive("UduinoDevice_AndroidBluetoothLE") &&
-                PlayerSettings.Android.minSdkVersion != AndroidSdkVersions.AndroidApiLevel21 &&
+                PlayerSettings.Android.minSdkVersion != AndroidSdkVersions.AndroidApiLevel22 &&
                 PlayerSettings.Android.targetSdkVersion != AndroidSdkVersions.AndroidApiLevel23)
             {
                 EditorGUI.indentLevel--;
@@ -725,9 +725,9 @@ namespace Uduino
                 EditorGUI.indentLevel++;
                 GUILayout.BeginHorizontal();
                 SetGUIBackgroundColor("#4FC3F7");
-                if (PlayerSettings.Android.minSdkVersion != AndroidSdkVersions.AndroidApiLevel21 && GUILayout.Button("Min SDK Version: 21"))
+                if (PlayerSettings.Android.minSdkVersion != AndroidSdkVersions.AndroidApiLevel22 && GUILayout.Button("Min SDK Version: 21"))
                 {
-                    PlayerSettings.Android.minSdkVersion = AndroidSdkVersions.AndroidApiLevel21;
+                    PlayerSettings.Android.minSdkVersion = AndroidSdkVersions.AndroidApiLevel22;
                 }
                 if (PlayerSettings.Android.targetSdkVersion != AndroidSdkVersions.AndroidApiLevel23 && GUILayout.Button("Target SDK Version: 23"))
                 {
@@ -740,7 +740,7 @@ namespace Uduino
             }
 
             else if (Manager.ExtensionIsPresentAndActive("UduinoDevice_AndroidSerial") &&
-               PlayerSettings.Android.minSdkVersion != AndroidSdkVersions.AndroidApiLevel19 &&
+               PlayerSettings.Android.minSdkVersion != AndroidSdkVersions.AndroidApiLevel22 &&
                PlayerSettings.Android.targetSdkVersion != AndroidSdkVersions.AndroidApiLevel23)
             {
                 EditorGUI.indentLevel--;
@@ -753,9 +753,9 @@ namespace Uduino
                 EditorGUI.indentLevel++;
                 GUILayout.BeginHorizontal();
                 SetGUIBackgroundColor("#4FC3F7");
-                if (PlayerSettings.Android.minSdkVersion != AndroidSdkVersions.AndroidApiLevel19 && GUILayout.Button("Min SDK Version: 19"))
+                if (PlayerSettings.Android.minSdkVersion != AndroidSdkVersions.AndroidApiLevel22 && GUILayout.Button("Min SDK Version: 19"))
                 {
-                    PlayerSettings.Android.minSdkVersion = AndroidSdkVersions.AndroidApiLevel19;
+                    PlayerSettings.Android.minSdkVersion = AndroidSdkVersions.AndroidApiLevel22;
                 }
                 if (PlayerSettings.Android.targetSdkVersion != AndroidSdkVersions.AndroidApiLevel23 && GUILayout.Button("Target SDK Version: 23"))
                 {
