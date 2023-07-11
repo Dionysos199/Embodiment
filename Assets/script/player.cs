@@ -30,7 +30,10 @@ public class player : MonoBehaviour
     {
         processor = new SignalProcessor(20, true);
         pv = GameObject.Find("Bone").GetComponent<PhotonView>();
-        AIpv = GameObject.Find("combineTexts").GetComponent<PhotonView>();
+        if(GameObject.Find("combineTexts"))
+        {
+            AIpv = GameObject.Find("combineTexts").GetComponent<PhotonView>();
+        }
 
         MyPV = GetComponent<PhotonView>();
         ActorNm  = MyPV.OwnerActorNr;
@@ -46,18 +49,20 @@ public class player : MonoBehaviour
         UduinoManager.Instance.Read(board, "readSensors"); // Read every frame the value of the "readSensors" function on our board.
         headRotation = HeadRotation();
         string text= singleton.text;
-        if (text != lastText)
-        {
-            if (MyPV.IsMine)
+        if (AIpv) {
+            if (text != lastText)
             {
-                sendText();
+                if (MyPV.IsMine)
+                {
+                    sendText();
 
+                }
             }
+            lastText = text;
         }
-        lastText = text;
-
-        
+    
     }
+
     Vector3 HeadRotation()
     {
         var head = new List<UnityEngine.XR.InputDevice>();
