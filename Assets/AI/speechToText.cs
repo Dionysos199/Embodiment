@@ -17,6 +17,8 @@ public class speechToText : MonoBehaviour
     [PunRPC]
     void ReceiveString(string text, int playerIndex)
     {
+
+        Debug.Log("actor num" + playerIndex);
         if (playerIndex == 1)
         {
             Debug.Log("the text was received halleloua"+ text);

@@ -24,43 +24,28 @@ public class player : MonoBehaviour
     private void Awake()
     {
        UduinoManager.Instance.OnDataReceived += readSensor; //Create the Delegate
-
+      
     }
     void Start()
     {
+        MyPV = GetComponent<PhotonView>();
+        ActorNm = MyPV.OwnerActorNr;
         processor = new SignalProcessor(20, true);
         pv = GameObject.Find("Bone").GetComponent<PhotonView>();
-        if(GameObject.Find("combineTexts"))
-        {
-            AIpv = GameObject.Find("combineTexts").GetComponent<PhotonView>();
-        }
 
-        MyPV = GetComponent<PhotonView>();
-        ActorNm  = MyPV.OwnerActorNr;
-
+        singleton._singletonEvent.AddListener(sendText);
         // Add invoke for resetting auto range
     }
-
+    bool send;
+    string _text;
     // Add auto reset function
-    string lastText="";
     private void Update()
     {
         UduinoDevice board = UduinoManager.Instance.GetBoard("Arduino");
         UduinoManager.Instance.Read(board, "readSensors"); // Read every frame the value of the "readSensors" function on our board.
         headRotation = HeadRotation();
-        string text= singleton.text;
-        if (AIpv) {
-            if (text != lastText)
-            {
-                if (MyPV.IsMine)
-                {
-                    sendText();
 
-                }
-            }
-            lastText = text;
-        }
-    
+   
     }
 
     Vector3 HeadRotation()
@@ -97,7 +82,6 @@ public class player : MonoBehaviour
         if (MyPV.IsMine)
         {
             sendData();
-
         }
     }
     // Update is called once per frame
@@ -121,17 +105,12 @@ public class player : MonoBehaviour
            }
        }
    */
-    void sendText()
+    public void sendText(string text)
     {
-        if (AIpv)
-        {
-            AIpv.RPC("ReceiveString", RpcTarget.All, singleton.text, ActorNm);
+        AIpv = GameObject.Find("combineTexts").GetComponent<PhotonView>();
+        AIpv.RPC("ReceiveString", RpcTarget.All, text, ActorNm);
 
-        }
-        else
-        {
-            Debug.Log("photon view object was not found hahaha");
-        }
+    
     }
     void sendData()
     {
