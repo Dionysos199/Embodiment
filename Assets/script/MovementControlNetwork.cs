@@ -15,7 +15,7 @@ using UnityEditorInternal;
 #endif
 
 [System.Serializable]
-public class mvtCtrlNetwork : MonoBehaviour
+public class MovementControlNetwork : MonoBehaviour
 {
     //public Transform rotator;
 
@@ -23,8 +23,6 @@ public class mvtCtrlNetwork : MonoBehaviour
 
     // Physical body settings, no impact on navigation
     [Header("Body")]
-    public GameObject leftFlipper;
-    public GameObject rightFlipper;
     public int tiltRange = 30;
 
     // Navigation control

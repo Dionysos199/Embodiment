@@ -109,7 +109,7 @@ public class SignalProcessor
     void BufferUpperLimit(float value)
     {
         // Add value to queue
-        _LimitBuffer.Enqueue(value);
+        _LimitBuffer.Enqueue(_buffer.Average());
 
         // Remove surplus item(s) from buffer
         while (_LimitBuffer.Count > _LimitBufferSize)
