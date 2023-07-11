@@ -13,6 +13,6 @@ public class Narrator1 : MonoBehaviour
     IEnumerator Intro()
     {
         yield return new WaitForSeconds(5f);
-        SpeechManager.StartReadMessage("Hello and welcome to our experience! I will guide you through this little adventure to your innerself");
+        SpeechManager.StartReadMessage("Hello and welcome to our experience! ");
     }
 }
