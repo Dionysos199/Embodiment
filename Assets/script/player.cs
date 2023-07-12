@@ -113,7 +113,7 @@ public class player : MonoBehaviour
     {
         if (pv)
         {
-            pv.RPC("ReceiveFloat", RpcTarget.All, sensorValue,processor.MaxReached(),headRotation, ActorNm);
+            pv.RPC("ReceiveFloat", RpcTarget.All, sensorValue,processor.MaxReached(), ActorNm);
 
         }
         else

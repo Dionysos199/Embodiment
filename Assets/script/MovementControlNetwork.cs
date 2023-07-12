@@ -84,7 +84,7 @@ public class MovementControlNetwork : MonoBehaviour
     }
     int i;
     [PunRPC]
-    void ReceiveFloat(float sensorValue, bool MaxReached,Vector3 headRotation,int playerIndex)
+    void ReceiveFloat(float sensorValue, bool MaxReached,int playerIndex)
     {
         if (playerIndex == 1)
         {
@@ -102,9 +102,6 @@ public class MovementControlNetwork : MonoBehaviour
                
 
             }
-            Debug.Log("headRotation:" + sensorValue);
-            headRotation1 = headRotation;
-            Debug.Log("leftRotation  " + sensorValue + " max reached" + MaxReached + i);
  
             leftTilt = sensorValue;
             MaxReached1 = MaxReached;
@@ -116,7 +113,6 @@ public class MovementControlNetwork : MonoBehaviour
                 lastTime = Time.time;
                 Debug.Log("last dt " + last_dt + "    dt " + dt + "   time " + Time.time + "  last time  " + lastTime);
             }
-            headRotation2 = headRotation;
             rightTilt = sensorValue;
         }
         Debug.Log(playerIndex);
@@ -159,8 +155,6 @@ public class MovementControlNetwork : MonoBehaviour
                 //  pitch = Mathf.Sin(phaseShift * Mathf.Deg2Rad);
                 //yaw = Mathf.Cos((phaseShift - 90) * Mathf.Deg2Rad);
 
-                Vector3 averageRotation = (headRotation1 + headRotation2) / 2;
-                Debug.Log("headRotation1: " + headRotation1 + ", headRotation2: " + headRotation2);
 
                 roll = math.abs( leftTilt - rightTilt);
                 yaw = math.abs(leftTilt - rightTilt);
