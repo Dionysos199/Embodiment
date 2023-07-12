@@ -135,6 +135,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fadeout
       objectReference: {fileID: 0}
+    - target: {fileID: 1864827699491586948, guid: 11adb3ca0bd52ec4e9b55e852aa58c85,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1864827699491587064, guid: 11adb3ca0bd52ec4e9b55e852aa58c85,
         type: 3}
       propertyPath: m_RootOrder
@@ -3093,7 +3098,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tiltRange: 30
   navigationMode: 0
-  thrust: 0.7
+  thrust: 2
   rotationSpeed: 10
   controlDevice: 0
   keySteps: 0.1
