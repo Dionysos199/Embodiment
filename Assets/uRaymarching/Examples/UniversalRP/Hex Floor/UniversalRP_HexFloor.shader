@@ -64,6 +64,16 @@ Shader "Raymarching/UniversalRP_HexFloor"
             #include "Assets/uRaymarching/Runtime/Shaders/Include/UniversalRP/Math.hlsl"
             #include "Assets/uRaymarching/Runtime/Shaders/Include/UniversalRP/Structs.hlsl"
             #include "Assets/uRaymarching/Runtime/Shaders/Include/UniversalRP/Utils.hlsl"
+
+
+            #include "DistanceFunctions.cginc"
+                uniform float4 r_box, r_sphere, r_sphere2;
+            uniform float radius1;
+            uniform float cubeSide;
+
+
+                uniform float4 _mandleBrotPos;
+                uniform float _power;
              inline float hexagone(float3 pos)
 {
                 // combine even hex tiles and odd hex tiles
@@ -118,78 +128,20 @@ Shader "Raymarching/UniversalRP_HexFloor"
                 // combine
                 return min(d1, d2);
             }
-            float scene(in float3 pos)
-            {
-                float3 z = pos;
-                float dr = 1.0;
-                float r = 0.0;
-                for (int i = 0; i < 10; i++) {
-                    r = length(z);
-                    if (r > 2.0) break;
+              float usersUI(float3 p) {
 
-                    // convert to polar coordinates
-                    float theta = acos(z.z / r);
-                    float phi = atan2(z.x,z.y);
-                    float Power = smoothstep(0.0, 1.0, _Time.y / 20.0) * 6.0 + 2.0;
+                float Box1 = sdBox(p - r_box.xyz, cubeSide);
+                float sphere = sdSphere(p - r_sphere.xyz, radius1 * 2);
 
-                    dr = pow(r, Power - 1.0) * Power * dr + 1.0;
-                    // scale and rotate the point
-                    float zr = pow(r,Power);
-                    theta = theta * Power;
-                    phi = phi * Power;
-
-                    // convert back to cartesian coordinates
-                    z = zr * float3(sin(theta) * cos(phi), sin(phi) * sin(theta), cos(theta));
-                    z += pos;
-                }
-                return float(0.5 * log(r) * r / dr);
-            }
-            float sdEllipsoid(in float3 p, in float3 r)
-            {
-                float k0 = length(p / r);
-                float k1 = length(p / (r * r));
-                return k0 * (k0 - 1.0) / k1;
-            }
-            float smin(float a, float b, float k)
-            {
-                float h = max(k - abs(a - b), 0.0);
-                return min(a, b) - h * h * 0.25 / k;
-
-            }
-            float2 stalagmite(float3 pos) {
-                // ground
-                float fh = -0.1 - 0.05 * (sin(pos.x * 2.0) + sin(pos.z * 2.0));
-
-                float d = pos.y - fh;
-                // bubbles
-
-                float2 res;
-
-                float3 vp = float3(fmod(abs(pos.x), 3.0), pos.y, fmod(pos.z + 1.5, 3.0) - 1.5);
-                float2 id = float2(floor(pos.x / 3.0), floor((pos.z + 1.5) / 3.0));
-                float fid = id.x * 11.1 + id.y * 31.7;
-                float fy = frac(fid * 1.312 + _Time.z * 0.02);
-                float y = -1.0 + 4.0 * fy;
-                float3  rad = float3(0.7, 1.0 + 0.5 * sin(fid), 0.7);
-                rad -= 0.1 * (sin(pos.x * 3.0) + sin(pos.y * 4.0) + sin(pos.z * 5.0));
-                float siz = 4.0 * fy * (1.0 - fy);
-                float d2 = sdEllipsoid(vp - float3(2.0, y, 0.0), siz * rad);
-
-                d2 *= 0.6;
-                d2 = min(d2, 2.0);
-                d = smin(d, d2, 0.32);
-
-                if (d < res.x) res = float2(d, 1.0);
-
-
-                return res;
-
+                return opSU(sphere, Box1, 2);
             }
             // @block DistanceFunction
             inline float DistanceFunction(float3 pos)
             {
                 // combine even hex tiles and odd hex tiles
-            return    stalagmite(pos);
+
+                float ui = usersUI(pos);
+                return opSU(ui, stalagmite(pos), 4);
             }
             // @endblock
 

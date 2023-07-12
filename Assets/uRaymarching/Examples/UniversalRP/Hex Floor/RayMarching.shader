@@ -110,7 +110,6 @@
 
                 float Box1 = sdBox(p - r_box.xyz, cubeSide);
                 float sphere = sdSphere(p - r_sphere.xyz, radius1*2);
-
                 return opSU(sphere, Box1,2);
             }
             float r_distanceField(float3 p) {

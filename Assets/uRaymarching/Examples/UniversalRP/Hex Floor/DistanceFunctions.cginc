@@ -218,7 +218,7 @@ float2 mandleBublbBubles(float3 pos) {
 	float3  rad = float3(0.7, 1.0 + 0.5 * sin(fid), 0.7);
 	rad -= 0.1 * (sin(pos.x * 3.0) + sin(pos.y * 4.0) + sin(pos.z * 5.0));
 	float siz = 4.0 * fy * (1.0 - fy);
-	float d2 = sdEllipsoid(vp - float3(2.0, y, 0.0), siz * rad);
+	float d2 = mb(vp - float3(2.0, y, 0.0));
 
 	d2 *= 0.6;
 	d2 = min(d2, 2.0);

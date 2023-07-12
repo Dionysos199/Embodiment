@@ -65,17 +65,18 @@ Shader "Raymarching/UniversalRP_HexFloor"
             #include "Assets/uRaymarching/Runtime/Shaders/Include/UniversalRP/Structs.hlsl"
             #include "Assets/uRaymarching/Runtime/Shaders/Include/UniversalRP/Utils.hlsl"
 
+
             #include "DistanceFunctions.cginc"
-            
+
                 uniform float4 r_box, r_sphere, r_sphere2;
-            uniform float radius1;
-            uniform float cubeSide;
+                uniform float radius1;
+                uniform float cubeSide;
 
 
                 uniform float4 _mandleBrotPos;
                 uniform float _power;
-
-             inline float hexagone(float3 pos)
+         
+            inline float hexagone(float3 pos)
 {
                 // combine even hex tiles and odd hex tiles
 
@@ -129,21 +130,18 @@ Shader "Raymarching/UniversalRP_HexFloor"
                 // combine
                 return min(d1, d2);
             }
-     
-      
-            float usersUI(float3 p) {
+              float usersUI(float3 p) {
 
                 float Box1 = sdBox(p - r_box.xyz, cubeSide);
                 float sphere = sdSphere(p - r_sphere.xyz, radius1 * 2);
-
                 return opSU(sphere, Box1, 2);
+
             }
-     
             // @block DistanceFunction
             inline float DistanceFunction(float3 pos)
             {
                 // combine even hex tiles and odd hex tiles
-                 return usersUI(pos);
+                return mb(pos);
             }
             // @endblock
 
