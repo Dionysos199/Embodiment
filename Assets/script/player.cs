@@ -31,7 +31,13 @@ public class player : MonoBehaviour
         pv = GameObject.Find("Bone").GetComponent<PhotonView>();
 
         singleton._singletonEvent.AddListener(sendText);
+        Invoke("ResetSensor", 1);
         // Add invoke for resetting auto range
+    }
+    private void Reset()
+    {
+            processor.RequestAutoRangeReset();
+        Debug.Log("sensor range is reset");
     }
     bool send;
     string _text;
