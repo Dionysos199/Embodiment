@@ -151,9 +151,9 @@ public class MovementControlNetwork : MonoBehaviour
                 yaw= rightTilt-leftTilt;
                 //Mathf.Abs(roll);
                 Debug.Log(" leftTilt " + leftTilt+ "  rightTilt " + rightTilt);
-                Debug.Log("pitch  " + pitch + "  roll  " + roll);
+                Debug.Log("pitch  " + pitch + "  roll  " + yaw);
                 Debug.Log("rollangle"+ Mathf.Abs(transform.rotation.eulerAngles.x));
-                transform.Rotate(new Vector3(pitch,yaw, 0) * rotationSpeed * Time.deltaTime);
+                transform.Rotate(new Vector3(pitch, 0, 0) * rotationSpeed * Time.deltaTime);
                 break;
             case NavigationMode.PhaseShift:
                 //  pitch = Mathf.Sin(phaseShift * Mathf.Deg2Rad);
