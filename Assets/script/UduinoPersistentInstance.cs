@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 public class UduinoPersistentInstance : MonoBehaviour
 {
     public static UduinoPersistentInstance instance;
-    // UduinoManager u;
+    UduinoManager u;
 
     void Awake()
     {
