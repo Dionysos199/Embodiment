@@ -104,8 +104,11 @@ public class player : MonoBehaviour
    */
     public void sendText(string text)
     {
-        AIpv = GameObject.Find("combineTexts").GetComponent<PhotonView>();
-        AIpv.RPC("ReceiveString", RpcTarget.All, text, ActorNm);
+        if (AIpv != null)
+        {
+            AIpv = GameObject.Find("combineTexts").GetComponent<PhotonView>();
+            AIpv.RPC("ReceiveString", RpcTarget.All, text, ActorNm);
+        }
 
     
     }

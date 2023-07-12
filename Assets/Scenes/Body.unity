@@ -364,7 +364,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!212 &156629119
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1780,7 +1780,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!212 &1537750315
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2216,6 +2216,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: LoadNextScene
+      objectReference: {fileID: 0}
+    - target: {fileID: 937293236821067043, guid: f9d4bc3e89af3364782e1dc86bdc5652,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 937293236821067068, guid: f9d4bc3e89af3364782e1dc86bdc5652,
         type: 3}
@@ -2983,6 +2988,7 @@ GameObject:
   - component: {fileID: 3212347369612395833}
   - component: {fileID: 3212347369612395835}
   - component: {fileID: 3212347369612395834}
+  - component: {fileID: 3212347369612395836}
   m_Layer: 0
   m_Name: Bone
   m_TagString: Untagged
@@ -3114,10 +3120,27 @@ MonoBehaviour:
   Synchronization: 3
   OwnershipTransfer: 0
   observableSearch: 2
-  ObservedComponents: []
+  ObservedComponents:
+  - {fileID: 3212347369612395836}
   sceneViewId: 2
   InstantiationId: 0
   isRuntimeInstantiated: 0
+--- !u!114 &3212347369612395836
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2891088392370003077}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SynchronizePosition: 1
+  m_SynchronizeRotation: 1
+  m_SynchronizeScale: 0
+  m_UseLocal: 1
 --- !u!1 &3239211179755981941
 GameObject:
   m_ObjectHideFlags: 0
