@@ -3098,7 +3098,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tiltRange: 30
   navigationMode: 0
-  thrust: 2
+  thrust: 0.8
   rotationSpeed: 10
   controlDevice: 0
   keySteps: 0.1

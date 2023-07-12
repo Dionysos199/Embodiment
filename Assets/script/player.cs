@@ -18,7 +18,7 @@ public class player : MonoBehaviour
     PhotonView AIpv;
     PhotonView MyPV;
     int ActorNm;
-    SignalProcessor processor;
+    SignalProcessorOriginal processor;
 
     // Start is called before the first frame update
     void Start()
@@ -27,7 +27,7 @@ public class player : MonoBehaviour
 
         MyPV = GetComponent<PhotonView>();
         ActorNm = MyPV.OwnerActorNr;
-        processor = new SignalProcessor(20, true);
+        processor = new SignalProcessorOriginal(20, true);
         pv = GameObject.Find("Bone").GetComponent<PhotonView>();
 
         singleton._singletonEvent.AddListener(sendText);
@@ -79,7 +79,7 @@ public class player : MonoBehaviour
 
         processor.AddValue(inputValue);
         sensorValue = processor.GetAmplitude();
-        processor.extremum();
+        //processor.extremum();
    
 
         if (MyPV.IsMine)
@@ -122,7 +122,7 @@ public class player : MonoBehaviour
     {
         if (pv)
         {
-            pv.RPC("ReceiveFloat", RpcTarget.All, sensorValue,processor.MaxReached(), ActorNm);
+            pv.RPC("ReceiveFloat", RpcTarget.All, sensorValue,processor.GetMaximum(), ActorNm);
 
         }
         else
