@@ -1,19 +1,16 @@
+
 using Photon.Pun;
 using UnityEngine;
 
 using Uduino;
 using Whisper;
 using UnityEngine.Events;
-using UnityEngine.SceneManagement;
 using System.Collections.Generic;
 using static UnityEngine.Rendering.DebugUI;
 using System;
 
 public class player : MonoBehaviour
 {
-    UduinoManager u;
-    public static player instance;
-
     Vector3 headRotation;
     float rotationStep=.1f;
     float sensorValue;
@@ -26,17 +23,8 @@ public class player : MonoBehaviour
     // Start is called before the first frame update
     private void Awake()
     {
-        if (instance != null)
-        {
-            Destroy(gameObject);
-            return;
-        }
-
-        instance = this;
-        DontDestroyOnLoad(gameObject);
-        
-        UduinoManager.Instance.OnDataReceived += readSensor; // Create the Delegate
-
+       UduinoManager.Instance.OnDataReceived += readSensor; //Create the Delegate
+      
     }
     void Start()
     {
@@ -48,26 +36,16 @@ public class player : MonoBehaviour
         singleton._singletonEvent.AddListener(sendText);
         // Add invoke for resetting auto range
     }
-
     bool send;
     string _text;
-    int counter;
     // Add auto reset function
     private void Update()
     {
         UduinoDevice board = UduinoManager.Instance.GetBoard("Arduino");
         UduinoManager.Instance.Read(board, "readSensors"); // Read every frame the value of the "readSensors" function on our board.
-        // headRotation = HeadRotation();
+        headRotation = HeadRotation();
 
-        if (SceneManager.GetActiveScene().name == "Body")
-        {
-            Debug.Log("Scene 'Body' is active.");
-            if (counter < 100)
-                counter++;
-            else
-                SceneManager.LoadScene("Mind");
-        }
-        Debug.Log("counter: " + counter);
+   
     }
 
     Vector3 HeadRotation()
