@@ -21,13 +21,10 @@ public class player : MonoBehaviour
     SignalProcessor processor;
 
     // Start is called before the first frame update
-    private void Awake()
-    {
-       UduinoManager.Instance.OnDataReceived += readSensor; //Create the Delegate
-      
-    }
     void Start()
     {
+        UduinoManager.Instance.OnDataReceived += readSensor; // Create the Delegate
+
         MyPV = GetComponent<PhotonView>();
         ActorNm = MyPV.OwnerActorNr;
         processor = new SignalProcessor(20, true);
