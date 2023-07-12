@@ -72,7 +72,7 @@ public class player : MonoBehaviour
         }
 
         processor.AddValue(inputValue);
-        sensorValue = processor.GetNormalized();
+        sensorValue = processor.GetAmplitude();
         processor.extremum();
    
 
