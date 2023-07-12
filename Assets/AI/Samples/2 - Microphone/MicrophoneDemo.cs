@@ -30,7 +30,7 @@ namespace Whisper.Samples
 
         private void Awake()
         {
-            button.onClick.AddListener(OnButtonPressed);
+            //button.onClick.AddListener(OnButtonPressed);
             Invoke("OnButtonPressed", time_till_start_recording);
 
             languageDropdown.value = languageDropdown.options
