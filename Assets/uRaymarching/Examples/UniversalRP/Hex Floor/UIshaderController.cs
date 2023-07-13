@@ -38,16 +38,16 @@ public class UIshaderController : MonoBehaviour
     private void Update()
     {
 
-        //r_material.SetFloat("radius1", _mvtCtrlNetwork.leftTilt);
-        //r_material.SetFloat("cubeSide", _mvtCtrlNetwork.rightTilt);
-        //Vector3 UIpos = UI.transform.position;
-        //Vector3 right = _mvtCtrlNetwork.gameObject.transform.right;
-        //r_material.SetVector("r_sphere", r_sphere + new Vector4(UIpos.x, UIpos.y, UIpos.z) + _mvtCtrlNetwork.lerpDt * new Vector4(right.x, right.y, right.z) / 2);
-        //r_material.SetVector("r_box", r_box + new Vector4(UIpos.x - _mvtCtrlNetwork.lerpDt / 2, UIpos.y, UIpos.z) - _mvtCtrlNetwork.lerpDt * new Vector4(right.x, right.y, right.z) / 2);
+        r_material.SetFloat("radius1", _mvtCtrlNetwork.leftTilt);
+        r_material.SetFloat("cubeSide", _mvtCtrlNetwork.rightTilt);
+        Vector3 UIpos = UI.transform.position;
+        Vector3 right = _mvtCtrlNetwork.gameObject.transform.right;
+        r_material.SetVector("r_sphere", r_sphere + new Vector4(UIpos.x, UIpos.y, UIpos.z) + _mvtCtrlNetwork.lerpDt * new Vector4(right.x, right.y, right.z) / 2);
+        r_material.SetVector("r_box", r_box + new Vector4(UIpos.x - _mvtCtrlNetwork.lerpDt / 2, UIpos.y, UIpos.z) - _mvtCtrlNetwork.lerpDt * new Vector4(right.x, right.y, right.z) / 2);
 
 
-        r_material.SetVector("r_sphere",new Vector4(.2f,.2f,.2f,.2f));
-        r_material.SetVector("r_box",new Vector4(.3f,.3f,.3f,.3f));
+        //r_material.SetVector("r_sphere",new Vector4(.2f,.2f,.2f,.2f));
+        //r_material.SetVector("r_box",new Vector4(.3f,.3f,.3f,.3f));
 
 
     }

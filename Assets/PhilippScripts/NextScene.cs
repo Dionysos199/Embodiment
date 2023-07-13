@@ -13,11 +13,12 @@ public class NextScene : MonoBehaviour
         {
             Debug.Log("PlayerCollided");
             //SceneController.instance.NextLevel();
-           fadeScreen.fadeOnStart = true;
-           _invertObjectnormals.enabled = true;
+            fadeScreen.fadeOnStart = true;
+            _invertObjectnormals.enabled = true;
 
 
             SceneController.instance.GoToSceneAsync(SceneManager.GetActiveScene().buildIndex + 1);
         }
+     
     }
 }
