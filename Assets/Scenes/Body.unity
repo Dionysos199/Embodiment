@@ -364,7 +364,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!212 &156629119
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1346,7 +1346,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!64 &1095267623
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -1537,10 +1537,20 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4283568535965736051, guid: 5e74a1ddc6a587244ab8471cb8cf9bb9,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: a9e8324f09948455e8ba16acb0d825d9, type: 2}
     - target: {fileID: 4283568535965736062, guid: 5e74a1ddc6a587244ab8471cb8cf9bb9,
         type: 3}
       propertyPath: m_Name
       value: SceneTrigger
+      objectReference: {fileID: 0}
+    - target: {fileID: 4283568535965736062, guid: 5e74a1ddc6a587244ab8471cb8cf9bb9,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 4283568535965736061, guid: 5e74a1ddc6a587244ab8471cb8cf9bb9, type: 3}
@@ -2212,10 +2222,35 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 937293236821067042, guid: f9d4bc3e89af3364782e1dc86bdc5652,
+        type: 3}
+      propertyPath: m_Size.x
+      value: 56.397842
+      objectReference: {fileID: 0}
+    - target: {fileID: 937293236821067042, guid: f9d4bc3e89af3364782e1dc86bdc5652,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 22.010767
+      objectReference: {fileID: 0}
+    - target: {fileID: 937293236821067042, guid: f9d4bc3e89af3364782e1dc86bdc5652,
+        type: 3}
+      propertyPath: m_Center.x
+      value: -3.3442316
+      objectReference: {fileID: 0}
+    - target: {fileID: 937293236821067042, guid: f9d4bc3e89af3364782e1dc86bdc5652,
+        type: 3}
+      propertyPath: m_Center.y
+      value: 4.592021
+      objectReference: {fileID: 0}
     - target: {fileID: 937293236821067043, guid: f9d4bc3e89af3364782e1dc86bdc5652,
         type: 3}
       propertyPath: m_Name
       value: LoadNextScene
+      objectReference: {fileID: 0}
+    - target: {fileID: 937293236821067043, guid: f9d4bc3e89af3364782e1dc86bdc5652,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 937293236821067068, guid: f9d4bc3e89af3364782e1dc86bdc5652,
         type: 3}
@@ -2291,7 +2326,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!82 &2046160531
 AudioSource:
   m_ObjectHideFlags: 0
