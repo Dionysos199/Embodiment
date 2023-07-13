@@ -15,7 +15,7 @@ public class Narrator1 : MonoBehaviour
         IEnumerator Intro()
         {
             yield return new WaitForSeconds(5f);
-            SpeechManager.StartReadMessage("Now that you've mastered to control your body, let's move on to the mind. Over the course of the next few minutes, you will both be asked a few meaningful questions. Please answer them openly, you will have 10 seconds for each answer.\r\nLet's create some shared memories …");
+            SpeechManager.StartReadMessage("Hello and welcome to our experience! I will guide you threw this little journey. Today you will find out how it feels like to share a body with another person and control it by synchronise your breathing");
         }
     
     //IEnumerator suggestion()
