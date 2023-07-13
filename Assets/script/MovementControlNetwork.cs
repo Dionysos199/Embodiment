@@ -106,7 +106,7 @@ public class MovementControlNetwork : MonoBehaviour
             headRotation1 = headRotation;
             Debug.Log("leftRotation  " + sensorValue + " max reached" + MaxReached + i);
  
-            leftTilt = 2*sensorValue-1;
+            leftTilt = sensorValue;
             MaxReached1 = MaxReached;
         }
         if (playerIndex == 2)
@@ -117,7 +117,7 @@ public class MovementControlNetwork : MonoBehaviour
                 Debug.Log("last dt " + last_dt + "    dt " + dt + "   time " + Time.time + "  last time  " + lastTime);
             }
             headRotation2 = headRotation;
-            rightTilt = 2*sensorValue-1;
+            rightTilt = sensorValue;
         }
         Debug.Log(playerIndex);
     }
@@ -145,14 +145,15 @@ public class MovementControlNetwork : MonoBehaviour
         {
             case NavigationMode.Amplitude:
 
-                roll = rightTilt -leftTilt;
-                pitch = Mathf.Abs( roll)/2+(rightTilt+leftTilt)/2;
-
+                //roll = rightTilt -leftTilt;
+                //pitch = Mathf.Abs( roll)/2+(rightTilt+leftTilt)/2;
+                pitch = 1-rightTilt-leftTilt;
+                yaw= rightTilt-leftTilt;
                 //Mathf.Abs(roll);
                 Debug.Log(" leftTilt " + leftTilt+ "  rightTilt " + rightTilt);
                 Debug.Log("pitch  " + pitch + "  roll  " + roll);
                 Debug.Log("rollangle"+ Mathf.Abs(transform.rotation.eulerAngles.x));
-                transform.Rotate(new Vector3(0,Sensitivity* roll, yaw) * rotationSpeed * Time.deltaTime);
+                transform.Rotate(new Vector3(pitch,yaw, 0) * rotationSpeed * Time.deltaTime);
                 break;
             case NavigationMode.PhaseShift:
                 //  pitch = Mathf.Sin(phaseShift * Mathf.Deg2Rad);
