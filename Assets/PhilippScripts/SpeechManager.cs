@@ -22,11 +22,14 @@ using Microsoft.CognitiveServices.Speech.Audio;
 //using OpenAI;
 using UnityEngine;
 
+using UnityEngine.Events;
+
 
 public static class SpeechManager
 {
     /////////////////// STT and TTS
 
+    public static UnityEvent endOfSpeech = new UnityEvent();
     private static SpeechConfig _speechConfig;
     private static AudioConfig _audioConfig;
     private static SpeechRecognitionResult _speechRecognitionResult;
@@ -220,6 +223,7 @@ public static class SpeechManager
 
                     AudioSource.PlayClipAtPoint(audioClip, Vector3.zero,1f);
                     await speechSynthesizer.StopSpeakingAsync();
+                    endOfSpeech?.Invoke();
                 }
                 //OutputSpeechSynthesisResult(speechSynthesisResult, _returnText); // literally just Debug.Logs :D
             }

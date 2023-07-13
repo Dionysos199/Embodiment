@@ -84,7 +84,7 @@ public class MovementControlNetwork : MonoBehaviour
     }
     int i;
     [PunRPC]
-    void ReceiveFloat(float sensorValue, bool MaxReached,Vector3 headRotation,int playerIndex)
+    void ReceiveFloat(float sensorValue, bool MaxReached,int playerIndex)
     {
         if (playerIndex == 1)
         {
@@ -102,9 +102,6 @@ public class MovementControlNetwork : MonoBehaviour
                
 
             }
-            Debug.Log("headRotation:" + sensorValue);
-            headRotation1 = headRotation;
-            Debug.Log("leftRotation  " + sensorValue + " max reached" + MaxReached + i);
  
             leftTilt = sensorValue;
             MaxReached1 = MaxReached;
@@ -116,7 +113,6 @@ public class MovementControlNetwork : MonoBehaviour
                 lastTime = Time.time;
                 Debug.Log("last dt " + last_dt + "    dt " + dt + "   time " + Time.time + "  last time  " + lastTime);
             }
-            headRotation2 = headRotation;
             rightTilt = sensorValue;
         }
         Debug.Log(playerIndex);
@@ -150,17 +146,15 @@ public class MovementControlNetwork : MonoBehaviour
                 pitch = 1-rightTilt-leftTilt;
                 yaw= rightTilt-leftTilt;
                 //Mathf.Abs(roll);
-                Debug.Log(" leftTilt " + leftTilt+ "  rightTilt " + rightTilt);
-                Debug.Log("pitch  " + pitch + "  roll  " + roll);
+                Debug.Log(" leftTilt " + leftTilt+ "  rightTilt " + rightTilt); 
+                Debug.Log("pitch  " + pitch + "  roll  " + yaw);
                 Debug.Log("rollangle"+ Mathf.Abs(transform.rotation.eulerAngles.x));
-                transform.Rotate(new Vector3(pitch,yaw, 0) * rotationSpeed * Time.deltaTime);
+                transform.Rotate(new Vector3(0, 0, yaw) * rotationSpeed * Time.deltaTime);
                 break;
             case NavigationMode.PhaseShift:
                 //  pitch = Mathf.Sin(phaseShift * Mathf.Deg2Rad);
                 //yaw = Mathf.Cos((phaseShift - 90) * Mathf.Deg2Rad);
 
-                Vector3 averageRotation = (headRotation1 + headRotation2) / 2;
-                Debug.Log("headRotation1: " + headRotation1 + ", headRotation2: " + headRotation2);
 
                 roll = math.abs( leftTilt - rightTilt);
                 yaw = math.abs(leftTilt - rightTilt);
@@ -187,7 +181,7 @@ public class MovementControlNetwork : MonoBehaviour
         // Rotate
 
         // Move forward
-        transform.Translate(-Vector3.up * thrust * Time.deltaTime);
+        transform.Translate(-Vector3.up * dt*thrust * Time.deltaTime);
     }
 }
 

@@ -136,6 +136,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fadeout
       objectReference: {fileID: 0}
+    - target: {fileID: 1864827699491586948, guid: 11adb3ca0bd52ec4e9b55e852aa58c85,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1864827699491587064, guid: 11adb3ca0bd52ec4e9b55e852aa58c85,
         type: 3}
       propertyPath: m_RootOrder
@@ -365,6 +370,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
+  m_IsActive: 0
   m_IsActive: 0
 --- !u!212 &156629119
 SpriteRenderer:
@@ -804,34 +810,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!83 &756847639
-AudioClip:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: Speech
-  m_LoadType: 0
-  m_Channels: 1
-  m_Frequency: 24000
-  m_BitsPerSample: 32
-  m_Length: 0
-  m_IsTrackerFormat: 0
-  m_Ambisonic: 0
-  m_SubsoundIndex: 0
-  m_PreloadAudioData: 1
-  m_LoadInBackground: 0
-  m_Legacy3D: 0
-  m_Resource:
-    m_Source: 
-    m_Offset: 0
-    m_Size: 0
-  m_CompressionFormat: 0
-  m_EditorResource:
-    m_Source: 
-    m_Offset: 0
-    m_Size: 0
-  m_EditorCompressionFormat: 0
 --- !u!1 &831403926
 GameObject:
   m_ObjectHideFlags: 0
@@ -1508,6 +1486,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_RootOrder
       value: 14
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 6378021689786768979, guid: 0845bd32a0cf2614a8637cbc366c6743,
         type: 3}
@@ -1579,7 +1558,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!212 &1537750315
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1976,34 +1955,6 @@ Transform:
   m_Father: {fileID: 8088512730507949771}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!83 &1894564948
-AudioClip:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: Speech
-  m_LoadType: 0
-  m_Channels: 1
-  m_Frequency: 24000
-  m_BitsPerSample: 32
-  m_Length: 0
-  m_IsTrackerFormat: 0
-  m_Ambisonic: 0
-  m_SubsoundIndex: 0
-  m_PreloadAudioData: 1
-  m_LoadInBackground: 0
-  m_Legacy3D: 0
-  m_Resource:
-    m_Source: 
-    m_Offset: 0
-    m_Size: 0
-  m_CompressionFormat: 0
-  m_EditorResource:
-    m_Source: 
-    m_Offset: 0
-    m_Size: 0
-  m_EditorCompressionFormat: 0
 --- !u!1001 &1960246187
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2044,6 +1995,7 @@ PrefabInstance:
     - target: {fileID: 937293236821067068, guid: f9d4bc3e89af3364782e1dc86bdc5652,
         type: 3}
       propertyPath: m_RootOrder
+      value: 13
       value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 937293236821067068, guid: f9d4bc3e89af3364782e1dc86bdc5652,
@@ -2807,6 +2759,7 @@ GameObject:
   - component: {fileID: 3212347369612395833}
   - component: {fileID: 3212347369612395835}
   - component: {fileID: 3212347369612395834}
+  - component: {fileID: 3212347369612395836}
   m_Layer: 0
   m_Name: Bone
   m_TagString: Untagged
@@ -2911,7 +2864,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tiltRange: 30
   navigationMode: 0
-  thrust: 0.7
+  thrust: 0.8
   rotationSpeed: 10
   controlDevice: 0
   keySteps: 0.1
@@ -2938,10 +2891,27 @@ MonoBehaviour:
   Synchronization: 3
   OwnershipTransfer: 0
   observableSearch: 2
-  ObservedComponents: []
+  ObservedComponents:
+  - {fileID: 3212347369612395836}
   sceneViewId: 2
   InstantiationId: 0
   isRuntimeInstantiated: 0
+--- !u!114 &3212347369612395836
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2891088392370003077}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SynchronizePosition: 1
+  m_SynchronizeRotation: 1
+  m_SynchronizeScale: 0
+  m_UseLocal: 1
 --- !u!1 &3239211179755981941
 GameObject:
   m_ObjectHideFlags: 0

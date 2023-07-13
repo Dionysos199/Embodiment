@@ -18,7 +18,7 @@ public class player : MonoBehaviour
     PhotonView AIpv;
     PhotonView MyPV;
     int ActorNm;
-    SignalProcessor processor;
+    SignalProcessorOriginal processor;
 
     // Start is called before the first frame update
     void Start()
@@ -27,11 +27,17 @@ public class player : MonoBehaviour
 
         MyPV = GetComponent<PhotonView>();
         ActorNm = MyPV.OwnerActorNr;
-        processor = new SignalProcessor(20, true);
+        processor = new SignalProcessorOriginal(20, true);
         pv = GameObject.Find("Bone").GetComponent<PhotonView>();
 
         singleton._singletonEvent.AddListener(sendText);
+        Invoke("ResetSensor", 1);
         // Add invoke for resetting auto range
+    }
+    private void Reset()
+    {
+            processor.RequestAutoRangeReset();
+        Debug.Log("sensor range is reset");
     }
     bool send;
     string _text;
@@ -73,7 +79,7 @@ public class player : MonoBehaviour
 
         processor.AddValue(inputValue);
         sensorValue = processor.GetAmplitude();
-        processor.extremum();
+        //processor.extremum();
    
 
         if (MyPV.IsMine)
@@ -104,16 +110,16 @@ public class player : MonoBehaviour
    */
     public void sendText(string text)
     {
-        AIpv = GameObject.Find("combineTexts").GetComponent<PhotonView>();
-        AIpv.RPC("ReceiveString", RpcTarget.All, text, ActorNm);
-
-    
+     Debug.Log("send text");
+            AIpv = GameObject.Find("combineTexts").GetComponent<PhotonView>();
+            AIpv.RPC("ReceiveString", RpcTarget.All, text, ActorNm);
+        
     }
     void sendData()
     {
         if (pv)
         {
-            pv.RPC("ReceiveFloat", RpcTarget.All, sensorValue,processor.MaxReached(),headRotation, ActorNm);
+            pv.RPC("ReceiveFloat", RpcTarget.All, sensorValue,processor.GetMaximum(), ActorNm);
 
         }
         else
