@@ -7,32 +7,31 @@ public class Narrator1 : MonoBehaviour
     void Start()
     {
         StartCoroutine(Intro());
-        StartCoroutine(suggestion());
+        //StartCoroutine(suggestion());
         StartCoroutine(question1());
-        StartCoroutine(question2());
+//        StartCoroutine(question2());
     }
 
-    IEnumerator Intro()
-    {
-        yield return new WaitForSeconds(5f);
-        // SpeechManager.StartReadMessage("Welcome to \"Embodiment\", an interactive, collaborative journey into exploring your body and mind.\r\nIn this experiment, you will share a body with another participant and experience first-hand, what this feels like. You will have to work together to navigate the body of a whale through its surroundings, controlled by your breathing. The depth of your breathing will influence the direction and how well synced you are your speed. Feel free to explore and enjoy the experience!");
-        SpeechManager.StartReadMessage("Now is the moment where you combine your thoughts and memories. " +
-            "During this stage your memories will fuse into one ");
-    }
-    IEnumerator suggestion()
-    {
-        yield return new WaitForSeconds(30f);
-        SpeechManager.StartReadMessage("try to maintain your normal breathing ");
-    }
+        IEnumerator Intro()
+        {
+            yield return new WaitForSeconds(5f);
+            SpeechManager.StartReadMessage("Now that you've mastered to control your body, let's move on to the mind. Over the course of the next few minutes, you will both be asked a few meaningful questions. Please answer them openly, you will have 10 seconds for each answer.\r\nLet's create some shared memories …");
+        }
+    
+    //IEnumerator suggestion()
+    //{
+    //    yield return new WaitForSeconds(30f);
+    //    SpeechManager.StartReadMessage("try to maintain your normal breathing ");
+    //}
 
     IEnumerator question1()
     {
-        yield return new WaitForSeconds(40f);
-        SpeechManager.StartReadMessage("And now Would you describe the place where you felt the most safe in your childhood ");
+        yield return new WaitForSeconds(20f);
+        SpeechManager.StartReadMessage("If you could transform into any creature, what would it be ? ");
     }
-    IEnumerator question2()
-    {
-        yield return new WaitForSeconds(65f);
-        SpeechManager.StartReadMessage("What was your closest pet");
-    }
+    //IEnumerator question2()
+    //{
+    //    yield return new WaitForSeconds(65f);
+    //    SpeechManager.StartReadMessage("What was your closest pet");
+    //}
 }
