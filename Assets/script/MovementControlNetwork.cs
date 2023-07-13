@@ -181,7 +181,7 @@ public class MovementControlNetwork : MonoBehaviour
         // Rotate
 
         // Move forward
-        transform.Translate(-Vector3.up * thrust/dt * Time.deltaTime);
+        transform.Translate(-Vector3.up * thrust/(dt+.5f) * Time.deltaTime);
     }
 }
 
