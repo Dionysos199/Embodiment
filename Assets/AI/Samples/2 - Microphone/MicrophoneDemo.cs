@@ -31,8 +31,7 @@ namespace Whisper.Samples
         private void Awake()
         {
             //button.onClick.AddListener(OnButtonPressed);
-            Invoke("OnButtonPressed", time_till_start_recording);
-
+            SpeechManager.endOfSpeech.AddListener(OnButtonPressed);
             languageDropdown.value = languageDropdown.options
                 .FindIndex(op => op.text == whisper.language);
             languageDropdown.onValueChanged.AddListener(OnLanguageChanged);

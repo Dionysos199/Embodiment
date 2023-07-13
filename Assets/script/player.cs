@@ -110,13 +110,10 @@ public class player : MonoBehaviour
    */
     public void sendText(string text)
     {
-        if (AIpv != null)
-        {
+     Debug.Log("send text");
             AIpv = GameObject.Find("combineTexts").GetComponent<PhotonView>();
             AIpv.RPC("ReceiveString", RpcTarget.All, text, ActorNm);
-        }
-
-    
+        
     }
     void sendData()
     {
