@@ -21,43 +21,36 @@ public class player : MonoBehaviour
     SignalProcessor processor;
 
     // Start is called before the first frame update
-    private void Awake()
-    {
-       UduinoManager.Instance.OnDataReceived += readSensor; //Create the Delegate
-
-    }
     void Start()
     {
-        processor = new SignalProcessor(20, true);
-        pv = GameObject.Find("Bone").GetComponent<PhotonView>();
-        AIpv = GameObject.Find("combineTexts").GetComponent<PhotonView>();
+        UduinoManager.Instance.OnDataReceived += readSensor; // Create the Delegate
 
         MyPV = GetComponent<PhotonView>();
-        ActorNm  = MyPV.OwnerActorNr;
+        ActorNm = MyPV.OwnerActorNr;
+        processor = new SignalProcessor(20, true);
+        pv = GameObject.Find("Bone").GetComponent<PhotonView>();
 
+        singleton._singletonEvent.AddListener(sendText);
+        Invoke("ResetSensor", 1);
         // Add invoke for resetting auto range
     }
-
+    private void Reset()
+    {
+            processor.RequestAutoRangeReset();
+        Debug.Log("sensor range is reset");
+    }
+    bool send;
+    string _text;
     // Add auto reset function
-    string lastText="";
     private void Update()
     {
         UduinoDevice board = UduinoManager.Instance.GetBoard("Arduino");
         UduinoManager.Instance.Read(board, "readSensors"); // Read every frame the value of the "readSensors" function on our board.
         headRotation = HeadRotation();
-        string text= singleton.text;
-        if (text != lastText)
-        {
-            if (MyPV.IsMine)
-            {
-                sendText();
 
-            }
-        }
-        lastText = text;
-
-        
+   
     }
+
     Vector3 HeadRotation()
     {
         var head = new List<UnityEngine.XR.InputDevice>();
@@ -85,14 +78,13 @@ public class player : MonoBehaviour
         }
 
         processor.AddValue(inputValue);
-        sensorValue = processor.GetNormalized();
+        sensorValue = processor.GetAmplitude();
         processor.extremum();
    
 
         if (MyPV.IsMine)
         {
             sendData();
-
         }
     }
     // Update is called once per frame
@@ -116,23 +108,18 @@ public class player : MonoBehaviour
            }
        }
    */
-    void sendText()
+    public void sendText(string text)
     {
-        if (AIpv)
-        {
-            AIpv.RPC("ReceiveString", RpcTarget.All, singleton.text, ActorNm);
-
-        }
-        else
-        {
-            Debug.Log("photon view object was not found hahaha");
-        }
+     Debug.Log("send text");
+            AIpv = GameObject.Find("combineTexts").GetComponent<PhotonView>();
+            AIpv.RPC("ReceiveString", RpcTarget.All, text, ActorNm);
+        
     }
     void sendData()
     {
         if (pv)
         {
-            pv.RPC("ReceiveFloat", RpcTarget.All, sensorValue,processor.MaxReached(),headRotation, ActorNm);
+            pv.RPC("ReceiveFloat", RpcTarget.All, sensorValue,processor.MaxReached(), ActorNm);
 
         }
         else

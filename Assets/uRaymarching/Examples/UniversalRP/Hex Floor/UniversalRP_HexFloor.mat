@@ -54,25 +54,19 @@ Material:
     - _BlendOp: 0
     - _BlendSrc: 5
     - _ClearCoat: 0
-    - _ClearCoatMask: 0.26
-    - _ClearCoatSmoothness: 0.825
+    - _ClearCoatMask: 0.513
+    - _ClearCoatSmoothness: 0.684
     - _Cull: 2
-    - _Cutoff: 0.5
-    - _DistanceMultiplier: 1
-    - _DstBlend: 0
+    - _DistanceMultiplier: 1.286
     - _EnvironmentReflections: 1
-    - _Loop: 28.7
-    - _Metallic: 0.254
-    - _MinDistance: 0.01
-    - _NormalDelta: 0.0001
-    - _QueueOffset: 0
-    - _SampleGI: 0
-    - _ShadowExtraBias: 0.01
-    - _ShadowLoop: 10
-    - _ShadowMinDistance: 0.01
-    - _Smoothness: 0.415
-    - _SrcBlend: 1
-    - _Surface: 0
+    - _Loop: 78.9
+    - _Metallic: 0.613
+    - _MinDistance: 0.0742
+    - _NormalDelta: 0.0007
+    - _ShadowExtraBias: -0.144
+    - _ShadowLoop: 88.3
+    - _ShadowMinDistance: 0.0581
+    - _Smoothness: 0.736
     - _ZWrite: 1
     m_Colors:
     - _BaseColor: {r: 0.046457764, g: 0.43906042, b: 0.509434, a: 1}

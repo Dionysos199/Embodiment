@@ -15,7 +15,7 @@ using UnityEditorInternal;
 #endif
 
 [System.Serializable]
-public class mvtCtrlNetwork : MonoBehaviour
+public class MovementControlNetwork : MonoBehaviour
 {
     //public Transform rotator;
 
@@ -23,8 +23,6 @@ public class mvtCtrlNetwork : MonoBehaviour
 
     // Physical body settings, no impact on navigation
     [Header("Body")]
-    public GameObject leftFlipper;
-    public GameObject rightFlipper;
     public int tiltRange = 30;
 
     // Navigation control
@@ -86,7 +84,7 @@ public class mvtCtrlNetwork : MonoBehaviour
     }
     int i;
     [PunRPC]
-    void ReceiveFloat(float sensorValue, bool MaxReached,Vector3 headRotation,int playerIndex)
+    void ReceiveFloat(float sensorValue, bool MaxReached,int playerIndex)
     {
         if (playerIndex == 1)
         {
@@ -104,11 +102,8 @@ public class mvtCtrlNetwork : MonoBehaviour
                
 
             }
-            Debug.Log("headRotation:" + sensorValue);
-            headRotation1 = headRotation;
-            Debug.Log("leftRotation  " + sensorValue + " max reached" + MaxReached + i);
  
-            leftTilt = 2*sensorValue-1;
+            leftTilt = sensorValue;
             MaxReached1 = MaxReached;
         }
         if (playerIndex == 2)
@@ -118,8 +113,7 @@ public class mvtCtrlNetwork : MonoBehaviour
                 lastTime = Time.time;
                 Debug.Log("last dt " + last_dt + "    dt " + dt + "   time " + Time.time + "  last time  " + lastTime);
             }
-            headRotation2 = headRotation;
-            rightTilt = 2*sensorValue-1;
+            rightTilt = sensorValue;
         }
         Debug.Log(playerIndex);
     }
@@ -147,21 +141,20 @@ public class mvtCtrlNetwork : MonoBehaviour
         {
             case NavigationMode.Amplitude:
 
-                roll = rightTilt -leftTilt;
-                pitch = Mathf.Abs( roll)/2+(rightTilt+leftTilt)/2;
-
+                //roll = rightTilt -leftTilt;
+                //pitch = Mathf.Abs( roll)/2+(rightTilt+leftTilt)/2;
+                pitch = 1-rightTilt-leftTilt;
+                yaw= rightTilt-leftTilt;
                 //Mathf.Abs(roll);
-                Debug.Log(" leftTilt " + leftTilt+ "  rightTilt " + rightTilt);
-                Debug.Log("pitch  " + pitch + "  roll  " + roll);
+                Debug.Log(" leftTilt " + leftTilt+ "  rightTilt " + rightTilt); 
+                Debug.Log("pitch  " + pitch + "  roll  " + yaw);
                 Debug.Log("rollangle"+ Mathf.Abs(transform.rotation.eulerAngles.x));
-                transform.Rotate(new Vector3(0,Sensitivity* roll, yaw) * rotationSpeed * Time.deltaTime);
+                transform.Rotate(new Vector3(pitch, 0, 0) * rotationSpeed * Time.deltaTime);
                 break;
             case NavigationMode.PhaseShift:
                 //  pitch = Mathf.Sin(phaseShift * Mathf.Deg2Rad);
                 //yaw = Mathf.Cos((phaseShift - 90) * Mathf.Deg2Rad);
 
-                Vector3 averageRotation = (headRotation1 + headRotation2) / 2;
-                Debug.Log("headRotation1: " + headRotation1 + ", headRotation2: " + headRotation2);
 
                 roll = math.abs( leftTilt - rightTilt);
                 yaw = math.abs(leftTilt - rightTilt);
@@ -188,7 +181,7 @@ public class mvtCtrlNetwork : MonoBehaviour
         // Rotate
 
         // Move forward
-        transform.Translate(-Vector3.up * thrust * Time.deltaTime);
+        transform.Translate(-Vector3.up * thrust/(dt+.5f) * Time.deltaTime);
     }
 }
 

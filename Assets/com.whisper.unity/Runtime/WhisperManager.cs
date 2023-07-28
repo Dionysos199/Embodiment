@@ -2,6 +2,7 @@ using System;
 using System.IO;
 using System.Threading.Tasks;
 using UnityEngine;
+using UnityEngine.Events;
 using Whisper.Native;
 using Whisper.Utils;
 
@@ -10,6 +11,8 @@ namespace Whisper
 {
     public class WhisperManager : MonoBehaviour
     {
+        public UnityEvent<string> textToSpeech= new UnityEvent<string>();
+        
         [SerializeField]
         [Tooltip("Path to model weights file relative to StreamingAssets")]
         private string modelPath = "Whisper/ggml-base.bin";
@@ -152,7 +155,8 @@ namespace Whisper
             UpdateParams();
             var res = await _whisper.GetTextAsync(samples, frequency, channels, _params);
             text = res.Result;
-            singleton.text = text;
+            
+            singleton._singletonEvent.Invoke(text);
             return res;
         }
 

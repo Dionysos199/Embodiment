@@ -6,8 +6,11 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Embodiment.unity
-    guid: 12465c12547666b48a63c060666025b1
+    path: Assets/Scenes/Body.unity
+    guid: 7dec831431e3b814aa74a369ea2e30d9
+  - enabled: 1
+    path: Assets/Scenes/Mind.unity
+    guid: 6854c4ee7ab392644a63bf6e22f6f41a
   m_configObjects:
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 9549386a41b156540adfbb44f60a106c,
       type: 2}
