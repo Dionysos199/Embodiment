@@ -8,6 +8,7 @@ How would it feel if your body and another person's became interconnected? If yo
 The experience brings two participants together inside an immersive underwater environment. Through wearable sensors, their breathing is measured in real time and translated into the behaviour of a shared virtual body: a whale navigating through the ocean.
 
 The participants must coordinate their breathing to stabilise and steer the creature. Their individual bodily rhythms become part of a shared system, creating an experience in which cooperation is not simply a social choice but a condition of movement and survival.
+<img width="512" height="340" alt="image" src="https://github.com/user-attachments/assets/f1c1d370-82f8-462b-8f1a-f32e02fba6df" />
 
 ## Concept and interaction
 
